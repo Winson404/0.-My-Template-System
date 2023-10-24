@@ -262,7 +262,7 @@
                       </div>
                     </div>
                     <div class="col-4">
-                      <button type="submit" class="btn btn-primary float-right" ame="create_user" id="submit_button"><i class="fa-solid fa-floppy-disk"></i> Register</button>
+                      <button type="submit" class="btn btn-primary float-right" name="create_user" id="submit_button"><i class="fa-solid fa-floppy-disk"></i> Register</button>
                     </div>
                   </div>
                 </div>
