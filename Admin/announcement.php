@@ -35,11 +35,10 @@
               <div class="card-body">
                 <table id="example11" class="table table-bordered table-hover text-sm">
                   <thead>
-                    <tr class="bg-light">
-                      <th width="15%">DATE</th>
-                      <th width="65%">TYPE OF ACTIVTY</th>
-                      <th width="20%">ACTIONS</th>
-                    </tr>
+                      <th>DATE</th>
+                      <th>ANNOUNCEMENT TITLE</th>
+                      <th>DATE ADDED</th>
+                      <th>ACTIONS</th>
                   </thead>
                   <tbody id="users_data">
                     <?php
@@ -47,21 +46,17 @@
                     while ($row = mysqli_fetch_array($sql)) {
                     ?>
                     <tr>
-                      <?php if($row['actDate'] == $date_today): ?>
-                      <td class="bg-white text-bold"><?php echo date("F d, Y", strtotime($row['actDate'])); ?></td>
-                      <td class="bg-white text-justify text-bold"><?php echo $row['actName']; ?></td>
-                      <td class="bg-white">
+                      <td class="<?php if($row['actDate'] == $date_today) { echo 'bg-white text-bold'; } else { echo 'bg-grey text-muted'; } ?>"><?php echo date("F d, Y", strtotime($row['actDate'])); ?></td>
+
+                      <td class="<?php if($row['actDate'] == $date_today) { echo 'bg-white text-justify text-bold'; } else { echo 'bg-grey text-muted text-justify'; } ?>"><?php echo $row['actName']; ?></td>
+
+                      <td class="<?php if($row['actDate'] == $date_today) { echo 'bg-white text-bold'; } else { echo 'bg-grey text-muted'; } ?>"><?php echo date("F d, Y h:i A", strtotime($row['date_added'])); ?></td>
+                      
+                      <td class="<?php if($row['actDate'] == $date_today) { echo 'bg-white'; } else { echo 'bg-grey text-muted'; } ?>">
                         <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#update<?php echo $row['actId']; ?>"><i class="fas fa-pencil-alt"></i> Edit</button>
                         <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete<?php echo $row['actId']; ?>"><i class="fas fa-trash"></i> Delete</button>
                       </td>
-                      <?php else: ?>
-                      <td class="bg-grey text-muted"><?php echo date("F d, Y", strtotime($row['actDate'])); ?></td>
-                      <td class="bg-grey text-muted text-justify"><?php echo $row['actName']; ?></td>
-                      <td class="bg-grey text-muted">
-                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#update<?php echo $row['actId']; ?>"><i class="fas fa-pencil-alt"></i> Edit</button>
-                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete<?php echo $row['actId']; ?>"><i class="fas fa-trash"></i> Delete</button>
-                      </td>
-                      <?php endif; ?>
+                    
                     </tr>
                     <?php include 'announcement_update_delete.php'; } ?>
                   </tbody>

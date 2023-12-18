@@ -68,7 +68,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-6 col-12">
                   <div class="form-group">
                     <span class="text-dark"><b>Date of Birth</b></span>
-                    <input type="date" class="form-control" name="dob" placeholder="Date of birth" required id="birthdate" onchange="calculateAge()">
+                    <input type="date" class="form-control" name="dob" placeholder="Date of birth" required id="birthdate" onchange="calculateAge()" max="<?php echo date('Y-m-d'); ?>">
                   </div>
                 </div>
                 <div class="col-lg-2 col-md-6 col-sm-6 col-12">
@@ -349,7 +349,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-6 col-12">
                   <div class="form-group">
                     <span class="text-dark"><b>Date of Birth</b></span>
-                    <input type="date" class="form-control" name="dob" placeholder="Date of birth" required id="birthdate" onchange="calculateAge()" value="<?php echo $row['dob']; ?>">
+                    <input type="date" class="form-control" name="dob" placeholder="Date of birth" required id="birthdate" onchange="calculateAge()" value="<?php echo $row['dob']; ?>" max="<?php echo date('Y-m-d'); ?>">
                   </div>
                 </div>
                 <div class="col-lg-2 col-md-6 col-sm-6 col-12">

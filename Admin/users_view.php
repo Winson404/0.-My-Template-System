@@ -46,7 +46,7 @@
                   <div class="col-lg-12 col col-md-6 col-sm-6 col-12">
                     <div class="form-group">
                       <small class="text-muted"><b>Full name:</b></small>
-                      <h6><?php echo ' '.$row['firstname'].' '.$row['middlename'].' '.$row['lastname'].' '.$row['suffix'].' '; ?></h6>
+                      <h6><?php echo $row['firstname'].' '.$row['middlename'].' '.$row['lastname'].' '.$row['suffix']; ?></h6>
                     </div>
                   </div>
                   <div class="col-4">

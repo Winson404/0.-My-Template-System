@@ -10,6 +10,7 @@
     // RECORD TIME LOGGED IN TO BE USED IN AUTO LOGOUT - CODE CAN BE FOUND ON ../INCLUDES/FOOTER.PHP
     $_SESSION['last_active'] = time();
     require_once '../includes/header.php';
+    require_once 'announcement_add.php'; 
 ?>
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
   <a href="dashboard.php" class="brand-link">
@@ -79,13 +80,13 @@
             ?>
             >
             <li class="nav-item">
-              <a href="admin.php" class="nav-link <?php echo (basename($_SERVER['PHP_SELF']) == 'admin.php' || basename($_SERVER['PHP_SELF']) == 'admin_mgmt.php' || basename($_SERVER['PHP_SELF']) == 'admin_view.php') ? 'active' : ''; ?>">
+              <a href="admin.php" class="nav-link <?php echo in_array(basename($_SERVER['PHP_SELF']), ['admin.php', 'admin_mgmt.php', 'admin_view.php']) ? 'active' : ''; ?>">
                 <i class="far fa-circle nav-icon"></i>
                 <p>&nbsp;&nbsp; Administrators</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="users.php" class="nav-link <?php echo (basename($_SERVER['PHP_SELF']) == 'users.php' || basename($_SERVER['PHP_SELF']) == 'users_mgmt.php' || basename($_SERVER['PHP_SELF']) == 'users_view.php') ? 'active' : ''; ?>">
+              <a href="users.php" class="nav-link <?php echo in_array(basename($_SERVER['PHP_SELF']), ['users.php', 'users_mgmt.php', 'users_view.php']) ? 'active' : ''; ?>">
                 <i class="far fa-circle nav-icon"></i>
                 <p>&nbsp;&nbsp; Users</p>
               </a>

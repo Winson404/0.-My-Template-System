@@ -57,7 +57,7 @@
                           <img src="../images-users/<?php echo $row['image']; ?>" alt="" width="25" height="25" class="img-circle d-block m-auto">
                         </a href="">
                       </td>
-                      <td><?php echo ' '.$row['firstname'].' '.$row['middlename'].' '.$row['lastname'].' '.$row['suffix'].' '; ?></td>
+                      <td><?php echo $row['firstname'].' '.$row['middlename'].' '.$row['lastname'].' '.$row['suffix']; ?></td>
                       <td><?= $row['gender'] ?></td>
                       <td><?php echo $row['email']; ?> <br> <span class="text-info"><?php if($row['contact'] !== '') { echo '+63 '.$row['contact']; } ?></span></td>
                       <td>
@@ -67,7 +67,7 @@
                         <span class="badge badge-success p-1"><?php echo $row['user_type']; ?></span>
                         <?php endif; ?>
                       </td>
-                      <td class="text-primary"><?php echo $row['date_registered']; ?></td>
+                      <td class="text-primary"><?php echo date("F d, Y h:i A", strtotime($row['date_registered'])); ?></td>
                       <td>
                         <a class="btn btn-primary btn-sm" href="admin_view.php?user_Id=<?php echo $row['user_Id']; ?>"><i class="fas fa-folder"></i> View</a>
                         <?php if($row['user_type'] == 'Admin'): ?>

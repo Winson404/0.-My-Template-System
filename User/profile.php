@@ -47,7 +47,7 @@
               </p>
               <hr>
               <strong><i class="fa-solid fa-calendar-days"></i> Date registered</strong>
-              <p class="text-muted ml-3"><?php echo $row['date_registered']; ?></p>
+              <p class="text-muted ml-3"><?php echo date("F d, Y h:i A", strtotime($row['date_registered'])); ?></p>
               <hr>
               <!--  <strong><i class="fas fa-pencil-alt mr-1"></i> Skills</strong>
               <p class="text-muted">
@@ -79,7 +79,7 @@
                   <div class="form-group row">
                     <label for="First name" class="col-sm-2 col-form-label">Full name</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="First name" placeholder="First name" value="<?php echo ' '.$row['firstname'].' '.$row['middlename'].' '.$row['lastname'].' '.$row['suffix'].' '; ?>" readonly>
+                      <input type="text" class="form-control" id="First name" placeholder="First name" value="<?php echo $row['firstname'].' '.$row['middlename'].' '.$row['lastname'].' '.$row['suffix']; ?>" readonly>
                     </div>
                   </div>
                   <div class="form-group row">
@@ -182,7 +182,7 @@
                     <div class="form-group row">
                       <label for="txtbirthdate" class="col-sm-2 col-form-label">Date of Birth</label>
                       <div class="col-sm-10">
-                        <input type="date" class="form-control" name="dob" placeholder="Date of birth" required id="birthdate" onchange="calculateAge()" value="<?php echo $row['dob']; ?>">
+                        <input type="date" class="form-control" name="dob" placeholder="Date of birth" required id="birthdate" onchange="calculateAge()" value="<?php echo $row['dob']; ?>" max="<?php echo date('Y-m-d'); ?>">
                       </div>
                     </div>
                     <div class="form-group row">
@@ -370,7 +370,7 @@
                     <div class="form-group row">
                       <label for="cpassword" class="col-sm-2 col-form-label">Confirm password</label>
                       <div class="col-sm-10">
-                        <input type="password" class="form-control" placeholder="Confirm password" name="cpassword" required id="cpassword" onkeyup="validate_password()" minlength="8">
+                        <input type="password" class="form-control" placeholder="Confirm password" name="cpassword" required id="cpassword" onkeyup="validate_confirm_password()" minlength="8">
                         <small id="wrong_pass_alert" class="text-bold" style="font-style: italic;font-size: 12px;"></small>
                       </div>
                     </div>

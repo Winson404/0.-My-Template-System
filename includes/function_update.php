@@ -11,27 +11,28 @@
 
 	
 	function updateSystemUser($conn, $user_Id, $user_type="User", $page) {
-   		$firstname        = mysqli_real_escape_string($conn, $_POST['firstname']);
-		$middlename       = mysqli_real_escape_string($conn, $_POST['middlename']);
-		$lastname         = mysqli_real_escape_string($conn, $_POST['lastname']);
-		$suffix           = mysqli_real_escape_string($conn, $_POST['suffix']);
-		$dob              = mysqli_real_escape_string($conn, $_POST['dob']);
-		$age              = mysqli_real_escape_string($conn, $_POST['age']);
-		$birthplace       = mysqli_real_escape_string($conn, $_POST['birthplace']);
-		$gender           = mysqli_real_escape_string($conn, $_POST['gender']);
-		$civilstatus      = mysqli_real_escape_string($conn, $_POST['civilstatus']);
-		$occupation       = mysqli_real_escape_string($conn, $_POST['occupation']);
-		$religion		  = mysqli_real_escape_string($conn, $_POST['religion']);
-		$email		      = mysqli_real_escape_string($conn, $_POST['email']);
-		$contact		  = mysqli_real_escape_string($conn, $_POST['contact']);
-		$house_no         = mysqli_real_escape_string($conn, $_POST['house_no']);
-		$street_name      = mysqli_real_escape_string($conn, $_POST['street_name']);
-		$purok            = mysqli_real_escape_string($conn, $_POST['purok']);
-		$zone             = mysqli_real_escape_string($conn, $_POST['zone']);
-		$barangay         = mysqli_real_escape_string($conn, $_POST['barangay']);
-		$municipality     = mysqli_real_escape_string($conn, $_POST['municipality']);
-		$province         = mysqli_real_escape_string($conn, $_POST['province']);
-		$region           = mysqli_real_escape_string($conn, $_POST['region']);
+		$firstname      = ucwords(mysqli_real_escape_string($conn, $_POST['firstname']));
+		$middlename     = ucwords(mysqli_real_escape_string($conn, $_POST['middlename']));
+		$lastname       = ucwords(mysqli_real_escape_string($conn, $_POST['lastname']));
+		$suffix         = ucwords(mysqli_real_escape_string($conn, $_POST['suffix']));
+		$dob            = ucwords(mysqli_real_escape_string($conn, $_POST['dob']));
+		$age            = ucwords(mysqli_real_escape_string($conn, $_POST['age']));
+		$birthplace     = ucwords(mysqli_real_escape_string($conn, $_POST['birthplace']));
+		$gender         = ucwords(mysqli_real_escape_string($conn, $_POST['gender']));
+		$civilstatus    = ucwords(mysqli_real_escape_string($conn, $_POST['civilstatus']));
+		$occupation     = ucwords(mysqli_real_escape_string($conn, $_POST['occupation']));
+		$religion       = ucwords(mysqli_real_escape_string($conn, $_POST['religion']));
+		$email          = mysqli_real_escape_string($conn, $_POST['email']);
+		$contact        = mysqli_real_escape_string($conn, $_POST['contact']);
+		$house_no       = ucwords(mysqli_real_escape_string($conn, $_POST['house_no']));
+		$street_name    = ucwords(mysqli_real_escape_string($conn, $_POST['street_name']));
+		$purok          = ucwords(mysqli_real_escape_string($conn, $_POST['purok']));
+		$zone           = ucwords(mysqli_real_escape_string($conn, $_POST['zone']));
+		$barangay       = ucwords(mysqli_real_escape_string($conn, $_POST['barangay']));
+		$municipality   = ucwords(mysqli_real_escape_string($conn, $_POST['municipality']));
+		$province       = ucwords(mysqli_real_escape_string($conn, $_POST['province']));
+		$region         = ucwords(mysqli_real_escape_string($conn, $_POST['region']));
+
 		$file             = basename($_FILES["fileToUpload"]["name"]);
 
 		$check_email = mysqli_query($conn, "SELECT * FROM users WHERE email='$email' AND user_Id !='$user_Id'");
@@ -83,7 +84,6 @@
 			}
 		}
 	}
-
 
 
 
@@ -147,27 +147,28 @@
 
 	// UPDATE ADMIN INFO - ADMIN/PROFILE.PHP || USER/PROFILE.PHP
 	function updateProfileInfo($conn, $user_Id, $page) {
-		$firstname        = mysqli_real_escape_string($conn, $_POST['firstname']);
-		$middlename       = mysqli_real_escape_string($conn, $_POST['middlename']);
-		$lastname         = mysqli_real_escape_string($conn, $_POST['lastname']);
-		$suffix           = mysqli_real_escape_string($conn, $_POST['suffix']);
-		$dob              = mysqli_real_escape_string($conn, $_POST['dob']);
-		$age              = mysqli_real_escape_string($conn, $_POST['age']);
-		$birthplace       = mysqli_real_escape_string($conn, $_POST['birthplace']);
-		$gender           = mysqli_real_escape_string($conn, $_POST['gender']);
-		$civilstatus      = mysqli_real_escape_string($conn, $_POST['civilstatus']);
-		$occupation       = mysqli_real_escape_string($conn, $_POST['occupation']);
-		$religion		  = mysqli_real_escape_string($conn, $_POST['religion']);
-		$email		      = mysqli_real_escape_string($conn, $_POST['email']);
-		$contact		  = mysqli_real_escape_string($conn, $_POST['contact']);
-		$house_no         = mysqli_real_escape_string($conn, $_POST['house_no']);
-		$street_name      = mysqli_real_escape_string($conn, $_POST['street_name']);
-		$purok            = mysqli_real_escape_string($conn, $_POST['purok']);
-		$zone             = mysqli_real_escape_string($conn, $_POST['zone']);
-		$barangay         = mysqli_real_escape_string($conn, $_POST['barangay']);
-		$municipality     = mysqli_real_escape_string($conn, $_POST['municipality']);
-		$province         = mysqli_real_escape_string($conn, $_POST['province']);
-		$region           = mysqli_real_escape_string($conn, $_POST['region']);
+		$firstname      = ucwords(mysqli_real_escape_string($conn, $_POST['firstname']));
+		$middlename     = ucwords(mysqli_real_escape_string($conn, $_POST['middlename']));
+		$lastname       = ucwords(mysqli_real_escape_string($conn, $_POST['lastname']));
+		$suffix         = ucwords(mysqli_real_escape_string($conn, $_POST['suffix']));
+		$dob            = ucwords(mysqli_real_escape_string($conn, $_POST['dob']));
+		$age            = ucwords(mysqli_real_escape_string($conn, $_POST['age']));
+		$birthplace     = ucwords(mysqli_real_escape_string($conn, $_POST['birthplace']));
+		$gender         = ucwords(mysqli_real_escape_string($conn, $_POST['gender']));
+		$civilstatus    = ucwords(mysqli_real_escape_string($conn, $_POST['civilstatus']));
+		$occupation     = ucwords(mysqli_real_escape_string($conn, $_POST['occupation']));
+		$religion       = ucwords(mysqli_real_escape_string($conn, $_POST['religion']));
+		$email          = mysqli_real_escape_string($conn, $_POST['email']);
+		$contact        = mysqli_real_escape_string($conn, $_POST['contact']);
+		$house_no       = ucwords(mysqli_real_escape_string($conn, $_POST['house_no']));
+		$street_name    = ucwords(mysqli_real_escape_string($conn, $_POST['street_name']));
+		$purok          = ucwords(mysqli_real_escape_string($conn, $_POST['purok']));
+		$zone           = ucwords(mysqli_real_escape_string($conn, $_POST['zone']));
+		$barangay       = ucwords(mysqli_real_escape_string($conn, $_POST['barangay']));
+		$municipality   = ucwords(mysqli_real_escape_string($conn, $_POST['municipality']));
+		$province       = ucwords(mysqli_real_escape_string($conn, $_POST['province']));
+		$region         = ucwords(mysqli_real_escape_string($conn, $_POST['region']));
+		
 
 	    $check_email = mysqli_query($conn, "SELECT * FROM users WHERE email='$email' AND user_Id !='$user_Id' ");
 		if(mysqli_num_rows($check_email) > 0 ) {

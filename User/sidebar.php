@@ -10,6 +10,7 @@
     // RECORD TIME LOGGED IN TO BE USED IN AUTO LOGOUT - CODE CAN BE FOUND ON ../INCLUDES/FOOTER.PHP
     $_SESSION['last_active'] = time();
     require_once '../includes/header.php';
+    require_once '../Admin/announcement_add.php';
 ?>
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
   <a href="dashboard.php" class="brand-link">

@@ -23,6 +23,39 @@ function showPassword() {
 }
 
 
+// PASSWORD MATCHING
+function validate_confirm_password() {
+  var pass = document.getElementById('password').value;
+  var confirm_pass = document.getElementById('cpassword').value;
+  if (pass != confirm_pass) {
+    document.getElementById('wrong_pass_alert').style.color = '#e60000';
+    document.getElementById('wrong_pass_alert').innerHTML = 'X Password did not matched!';
+    document.getElementById('submit_button').disabled = true;
+    document.getElementById('submit_button').style.opacity = (0.4);
+  } else {
+    document.getElementById('wrong_pass_alert').style.color = 'green';
+    document.getElementById('wrong_pass_alert').innerHTML = '✓ Password matched!';
+    document.getElementById('submit_button').disabled = false;
+    document.getElementById('submit_button').style.opacity = (1);
+  }
+}
+
+
+// SHOW/HIDE PASSWORD - REGISTRATION/SAVING/UPDATING RECORDS
+function togglePasswordVisibility(inputId) {
+    var passwordInput = document.getElementById(inputId);
+    var eyeToggle = document.getElementById("eye-toggle-" + inputId);
+
+    if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        eyeToggle.innerHTML = '<i class="fa fa-eye-slash" aria-hidden="true"></i>';
+    } else {
+        passwordInput.type = "password";
+        eyeToggle.innerHTML = '<i class="fa fa-eye" aria-hidden="true"></i>';
+    }
+}
+
+
 
 // IMAGE PREVIEW
 function getImagePreview(event) {
@@ -144,35 +177,4 @@ passwordField.addEventListener('input', () => {
 
 
 
-// PASSWORD MATCHING
-function validate_confirm_password() {
-  var pass = document.getElementById('password').value;
-  var confirm_pass = document.getElementById('cpassword').value;
-  if (pass != confirm_pass) {
-    document.getElementById('wrong_pass_alert').style.color = '#e60000';
-    document.getElementById('wrong_pass_alert').innerHTML = 'X Password did not matched!';
-    document.getElementById('submit_button').disabled = true;
-    document.getElementById('submit_button').style.opacity = (0.4);
-  } else {
-    document.getElementById('wrong_pass_alert').style.color = 'green';
-    document.getElementById('wrong_pass_alert').innerHTML = '✓ Password matched!';
-    document.getElementById('submit_button').disabled = false;
-    document.getElementById('submit_button').style.opacity = (1);
-  }
-}
-
-
-// SHOW/HIDE PASSWORD - REGISTRATION/SAVING/UPDATING RECORDS
-function togglePasswordVisibility(inputId) {
-    var passwordInput = document.getElementById(inputId);
-    var eyeToggle = document.getElementById("eye-toggle-" + inputId);
-
-    if (passwordInput.type === "password") {
-        passwordInput.type = "text";
-        eyeToggle.innerHTML = '<i class="fa fa-eye-slash" aria-hidden="true"></i>';
-    } else {
-        passwordInput.type = "password";
-        eyeToggle.innerHTML = '<i class="fa fa-eye" aria-hidden="true"></i>';
-    }
-}
 

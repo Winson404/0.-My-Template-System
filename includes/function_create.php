@@ -10,33 +10,31 @@
 	if (!class_exists('PHPMailer\PHPMailer\SMTP')) { require __DIR__ . '/../vendor/PHPMailer/src/SMTP.php'; }
 
 	
-	
 	// SAVE SYSTEM USERS - ADMIN/ADMIN_MGMT.PHP || ADMIN/USERS_MGMT.PHP
 	function saveUser($conn, $page, $user_type = "User", $path = "images-users/") {
-		$firstname        = mysqli_real_escape_string($conn, $_POST['firstname']);
-		$middlename       = mysqli_real_escape_string($conn, $_POST['middlename']);
-		$lastname         = mysqli_real_escape_string($conn, $_POST['lastname']);
-		$suffix           = mysqli_real_escape_string($conn, $_POST['suffix']);
-		$dob              = mysqli_real_escape_string($conn, $_POST['dob']);
-		$age              = mysqli_real_escape_string($conn, $_POST['age']);
-		$birthplace       = mysqli_real_escape_string($conn, $_POST['birthplace']);
-		$gender           = mysqli_real_escape_string($conn, $_POST['gender']);
-		$civilstatus      = mysqli_real_escape_string($conn, $_POST['civilstatus']);
-		$occupation       = mysqli_real_escape_string($conn, $_POST['occupation']);
-		$religion		  = mysqli_real_escape_string($conn, $_POST['religion']);
-		$email		      = mysqli_real_escape_string($conn, $_POST['email']);
-		$contact		  = mysqli_real_escape_string($conn, $_POST['contact']);
-		$house_no         = mysqli_real_escape_string($conn, $_POST['house_no']);
-		$street_name      = mysqli_real_escape_string($conn, $_POST['street_name']);
-		$purok            = mysqli_real_escape_string($conn, $_POST['purok']);
-		$zone             = mysqli_real_escape_string($conn, $_POST['zone']);
-		$barangay         = mysqli_real_escape_string($conn, $_POST['barangay']);
-		$municipality     = mysqli_real_escape_string($conn, $_POST['municipality']);
-		$province         = mysqli_real_escape_string($conn, $_POST['province']);
-		$region           = mysqli_real_escape_string($conn, $_POST['region']);
+		$firstname      = ucwords(mysqli_real_escape_string($conn, $_POST['firstname']));
+		$middlename     = ucwords(mysqli_real_escape_string($conn, $_POST['middlename']));
+		$lastname       = ucwords(mysqli_real_escape_string($conn, $_POST['lastname']));
+		$suffix         = ucwords(mysqli_real_escape_string($conn, $_POST['suffix']));
+		$dob            = ucwords(mysqli_real_escape_string($conn, $_POST['dob']));
+		$age            = ucwords(mysqli_real_escape_string($conn, $_POST['age']));
+		$birthplace     = ucwords(mysqli_real_escape_string($conn, $_POST['birthplace']));
+		$gender         = ucwords(mysqli_real_escape_string($conn, $_POST['gender']));
+		$civilstatus    = ucwords(mysqli_real_escape_string($conn, $_POST['civilstatus']));
+		$occupation     = ucwords(mysqli_real_escape_string($conn, $_POST['occupation']));
+		$religion       = ucwords(mysqli_real_escape_string($conn, $_POST['religion']));
+		$email          = mysqli_real_escape_string($conn, $_POST['email']);
+		$contact        = mysqli_real_escape_string($conn, $_POST['contact']);
+		$house_no       = ucwords(mysqli_real_escape_string($conn, $_POST['house_no']));
+		$street_name    = ucwords(mysqli_real_escape_string($conn, $_POST['street_name']));
+		$purok          = ucwords(mysqli_real_escape_string($conn, $_POST['purok']));
+		$zone           = ucwords(mysqli_real_escape_string($conn, $_POST['zone']));
+		$barangay       = ucwords(mysqli_real_escape_string($conn, $_POST['barangay']));
+		$municipality   = ucwords(mysqli_real_escape_string($conn, $_POST['municipality']));
+		$province       = ucwords(mysqli_real_escape_string($conn, $_POST['province']));
+		$region         = ucwords(mysqli_real_escape_string($conn, $_POST['region']));
 		$password         = md5($_POST['password']);
 		$file             = basename($_FILES["fileToUpload"]["name"]);
-		$date_registered  = date('Y-m-d');
 
 	    $check_email = mysqli_query($conn, "SELECT * FROM users WHERE email='$email'");
 	    if (mysqli_num_rows($check_email) > 0) {
@@ -60,7 +58,7 @@
 	            displayErrorMessage("Your file was not uploaded.", $page);
 	        } else {
 	            if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-	            	$save = mysqli_query($conn, "INSERT INTO users (firstname, middlename, lastname, suffix, dob, age, email, contact, birthplace, gender, civilstatus, occupation, religion, house_no, street_name, purok, zone, barangay, municipality, province, region, image, password, user_type, date_registered) VALUES ('$firstname', '$middlename', '$lastname', '$suffix', '$dob', '$age', '$email', '$contact', '$birthplace', '$gender', '$civilstatus', '$occupation', '$religion', '$house_no', '$street_name', '$purok', '$zone', '$barangay', '$municipality', '$province', '$region', '$file', '$password', '$user_type', '$date_registered')");
+	            	$save = mysqli_query($conn, "INSERT INTO users (firstname, middlename, lastname, suffix, dob, age, email, contact, birthplace, gender, civilstatus, occupation, religion, house_no, street_name, purok, zone, barangay, municipality, province, region, image, password, user_type, date_registered) VALUES ('$firstname', '$middlename', '$lastname', '$suffix', '$dob', '$age', '$email', '$contact', '$birthplace', '$gender', '$civilstatus', '$occupation', '$religion', '$house_no', '$street_name', '$purok', '$zone', '$barangay', '$municipality', '$province', '$region', '$file', '$password', '$user_type', NOW())");
 	            	displaySaveMessage($save, $page);
 	            } else {
 	            	displayErrorMessage("There was an error uploading your profile picture.", $page); 
@@ -73,55 +71,10 @@
 
 	// SAVE ACTIVITY - ADMIN/ANNOUNCEMENT_ADD.PHP
 	function saveActivity($conn, $page, $activity, $actDate) {
-		$date_acquired = date('Y-m-d h:i A');
-		$save = mysqli_query($conn, "INSERT INTO announcement (actName, actDate, date_added) VALUES ('$activity', '$actDate', '$date_acquired')");
+		$save = mysqli_query($conn, "INSERT INTO announcement (actName, actDate, date_added) VALUES ('$activity', '$actDate', NOW())");
 		displaySaveMessage($save, $page);
 	}
 
-
-
-	// SAVE CUSTOMIZATION - ADMIN/CUSTOMIZATION_ADD.PHP
-	function saveCustomization($conn, $page) {
-	    $file = basename($_FILES["fileToUpload"]["name"]);
-	    $date_registered = date('Y-m-d h:i A');
-
-	    $count = mysqli_query($conn, "SELECT COUNT(customID) AS countID FROM customization");
-	    $row = mysqli_fetch_array($count);
-	    if ($row['countID'] == 6) {
-	        displayErrorMessage("Maximum number of customizations have been reached.", $page);
-	    } else {
-	        $exist = mysqli_query($conn, "SELECT * FROM customization WHERE picture='$file'");
-	        if (mysqli_num_rows($exist) > 0) {
-	        	displayErrorMessage("Image already exists in the database.", $page);
-	        } else {
-	            $sign_target_dir = "../images-customization/";
-	            $sign_target_file = $sign_target_dir . $file;
-	            $uploadOk = 1;
-	            $sign_imageFileType = strtolower(pathinfo($sign_target_file, PATHINFO_EXTENSION));
-
-	            $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-	            if ($check == false) {
-		            displayErrorMessage("File is not an image.", $page);
-		            $uploadOk = 0;
-		        } elseif ($_FILES["fileToUpload"]["size"] > 500000) {
-		            displayErrorMessage("File must be up to 500KB in size.", $page);
-		            $uploadOk = 0;
-		        } elseif ($sign_imageFileType != "jpg" && $sign_imageFileType != "png" && $sign_imageFileType != "jpeg" && $sign_imageFileType != "gif") {
-		            displayErrorMessage("Only JPG, JPEG, PNG & GIF files are allowed.", $page);
-		            $uploadOk = 0;
-		        } elseif ($uploadOk == 0) {
-		            displayErrorMessage("Your file was not uploaded.", $page);
-		        } else {
-	                if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $sign_target_file)) {
-	                    $save = mysqli_query($conn, "INSERT INTO customization (picture, date_added) VALUES ('$file', '$date_registered')");
-	                    displaySaveMessage($save, $page);
-	                } else {
-	                	displayErrorMessage("There was an error uploading your digital signature.", $page);
-	                }
-	            }
-	        }
-	    }
-	}
 
 
 
