@@ -28,10 +28,28 @@
 	}
 
 
-	// SAVE CUSTOMIZATION - CUSTOMIZATION_ADD.PHP
-	if (isset($_POST['create_customization'])) {
-	    saveCustomization($conn, "customize.php");
+	// DATABASE RESTORATION - RESTORE.PHP
+	if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['restore'])) {
+	    $file = $_FILES['fileToRestore']['tmp_name'];
+	    if (!$file) {
+	        die("Please choose a file to restore.");
+	    }
+	    $sql = file_get_contents($file);
+	    $queries = explode(';', $sql);
+	    foreach ($queries as $query) {
+	        if (!empty(trim($query))) {
+	            $result = mysqli_query($conn, $query);
+	            if (!$result) {
+	                die("Error executing SQL query: " . mysqli_error($conn));
+	            }
+	        }
+	    }
+	    $_SESSION['message'] = "Database restoration successful";
+		$_SESSION['text'] = "Sent successfully!";
+		$_SESSION['status'] = "success";
+		header("Location: restore.php");
 	}
+
 	
 	
 ?>

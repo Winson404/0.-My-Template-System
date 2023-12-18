@@ -116,7 +116,7 @@
             ?>
             ">
             <i class="fa-solid fa-database"></i>
-            <p>&nbsp;&nbsp;Back-up and Restore<i class="right fas fa-angle-left"></i></p>
+            <p>&nbsp;&nbsp;Manage Database<i class="right fas fa-angle-left"></i></p>
           </a>
           <ul class="nav nav-treeview"
             <?php

@@ -1,82 +1,132 @@
+<title>TEMPLATE SYSTEM | Database Backup</title>
 <?php 
 
 require_once 'sidebar.php';
 
-$connection = mysqli_connect("localhost","root","","my_template");
-$tables = array();
-$result = mysqli_query($connection,"SHOW TABLES");
-while($row = mysqli_fetch_row($result)){
-  $tables[] = $row[0];
+$tables = [];
+$result = mysqli_query($conn, "SHOW TABLES");
+
+while ($row = mysqli_fetch_row($result)) {
+    $tables[] = $row[0];
 }
+
 $return = '';
-foreach($tables as $table){
-  $result = mysqli_query($connection,"SELECT * FROM ".$table);
-  $num_fields = mysqli_num_fields($result);
-  
-  $return .= 'DROP TABLE '.$table.';';
-  $row2 = mysqli_fetch_row(mysqli_query($connection,"SHOW CREATE TABLE ".$table));
-  $return .= "\n\n".$row2[1].";\n\n";
-  
-  for($i=0;$i<$num_fields;$i++){
-    while($row = mysqli_fetch_row($result)){
-      $return .= "INSERT INTO ".$table." VALUES(";
-      for($j=0;$j<$num_fields;$j++){
-        $row[$j] = addslashes($row[$j]);
-        if(isset($row[$j])){ $return .= '"'.$row[$j].'"';}
-        else{ $return .= '""';}
-        if($j<$num_fields-1){ $return .= ',';}
-      }
-      $return .= ");\n";
+
+foreach ($tables as $table) {
+    $result = mysqli_query($conn, "SELECT * FROM " . $table);
+    $num_fields = mysqli_num_fields($result);
+
+    $return .= 'DROP TABLE IF EXISTS ' . $table . ';';
+    $row2 = mysqli_fetch_row(mysqli_query($conn, "SHOW CREATE TABLE " . $table));
+    $return .= "\n\n" . $row2[1] . ";\n\n";
+
+    while ($row = mysqli_fetch_row($result)) {
+        $return .= "INSERT INTO " . $table . " VALUES(";
+
+        for ($j = 0; $j < $num_fields; $j++) {
+            $row[$j] = addslashes($row[$j]);
+            $return .= '"' . $row[$j] . '"';
+            if ($j < $num_fields - 1) {
+                $return .= ',';
+            }
+        }
+
+        $return .= ");\n";
     }
-  }
-  $return .= "\n\n\n";
+
+    $return .= "\n\n\n";
 }
-//save file
-$handle = fopen(date("Y-m-d").".sql","w+");
-fwrite($handle,$return);
+
+// Save file inside the "database" folder
+$backupFileName = '../database/backup_' . date("Y-m-d_H-i-s") . '.sql';
+$backupFilePath = __DIR__ . '/' . $backupFileName;
+
+$handle = fopen($backupFilePath, "w+");
+
+if ($handle === false) {
+    die("Unable to open file for writing.");
+}
+
+fwrite($handle, $return);
 fclose($handle);
 
+$_SESSION['message'] = "Backup successful.";
+$_SESSION['text'] = "Saved successfully!";
+$_SESSION['status'] = "success";
+echo '<meta http-equiv="refresh" content="5;url=dashboard.php">';
 ?>
+<style>
+    body {
+        background-color: #f4f4f4;
+    }
 
-<script src="../sweetalert2.min.js"></script>
-<!-- SUCCESS -->
-<?php 
-  echo ' <script type="text/javascript">
-      swal ({
-        title: "Good job!",
-        text: "Your Database has been Backed Up Succesfully!",
-        icon: "success",
-        confirmButtonColor: "#3085d6",
-        confirmButtonText: "Loading...",
-        timer: 3000
-      });
-    </script>';
+    .content {
+        padding: 20px;
+    }
 
-    $_SESSION['success']   = "Good job!";
-?>
+    .card {
+        border: none;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
 
+    .card-header {
+        background-color: #fff;
+        border-bottom: 1px solid #ddd;
+    }
 
+    .card-body {
+        text-align: center;
+    }
 
-  <div class="content-wrapper" style="margin-top: 70px;">
-    <section class="content">
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+</style>
+  <div class="content-wrapper">
+    <div class="content-header">
       <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="card">
-              <div class="card-body">
-                <?php if(isset($_SESSION['success'])) { ?> 
-                 <h3 class="text-success text-center" id="alert"><b>Database back-up success!</b></h3>
-                <?php unset($_SESSION['success']); } ?>
-                 <img src="../images/db.gif" alt="" class="img-fluid" width="500" style=" display: block; margin-left: auto;margin-right: auto;">
-              </div>
-            </div>
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0">Database Backup</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="dashboard.php">Home</a></li>
+              <li class="breadcrumb-item active">Database Backup</li>
+            </ol>
           </div>
         </div>
       </div>
+    </div>
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header p-2">
+                            <div class="card-tools mr-1">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <img src="../images/db.gif" alt="Database Backup Status">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
-  </div>
+
+<?php require_once 'announcement_add.php'; require_once '../includes/footer.php'; ?>
 
 
-<?php include '../includes/footer.php'; ?>
-
-
+<script>
+    // JavaScript code to redirect after 3 seconds
+    setTimeout(function () {
+        window.location.href = 'dashboard.php';
+    }, 3000);
+</script>
