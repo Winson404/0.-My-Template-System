@@ -194,8 +194,6 @@
                             </div>
                         </div>
 
-
-
                         <div class="col-lg-12 mt-3 mb-2 col-md-12 col-sm-12 col-12">
                           <a class="h5 text-primary"><b>Account password</b></a>
                           <div class="dropdown-divider"></div>
@@ -273,7 +271,7 @@
                       <div class="icheck-primary">
                         <input type="checkbox" id="agreeTerms" name="terms" value="agree">
                         <label for="agreeTerms">
-                         I agree to the <a href="#">terms</a>
+                         I agree to the <a href="#" data-toggle="modal" data-target="#terms-conditions">terms</a>
                         </label>
                       </div>
                     </div>
@@ -291,6 +289,27 @@
     </div>
   </div>
   <!-- /.content-wrapper -->
+
+
+  <div class="modal fade" id="terms-conditions" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+         <div class="modal-header bg-light">
+            <img src="dist/img/AdminLTELogo.png" alt="" class="d-block m-auto img-circle img-fluid shadow-sm" width="100">
+        </div>
+        <div class="modal-body text-justify">
+            <h5 class="modal-title text-center mb-4" id="exampleModalLabel">Terms and Conditions</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel metus id elit mollis blandit nec vel libero. In ut facilisis dolor. Donec efficitur velit id ligula egestas, nec volutpat sapien congue.</p>
+            <p>Curabitur ullamcorper feugiat velit, a egestas urna facilisis non. Sed in commodo nisl. Fusce vehicula dui at ligula blandit, sit amet dignissim justo volutpat. Integer sagittis, libero sit amet fermentum sagittis, neque dui hendrerit dolor.</p>
+            <!-- Add more terms and conditions text as needed -->
+        </div>
+        <div class="modal-footer alert-light">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 <br>
 <br>
 <br>
