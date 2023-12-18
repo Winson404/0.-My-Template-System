@@ -61,9 +61,6 @@
 	}
 
 
-
-
-
 	// FUNCTION TO HANDLE ERROR MESSAGES
 	function displayErrorMessage($errorMessage, $page) {
 		$_SESSION['message'] = $errorMessage;

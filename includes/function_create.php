@@ -146,7 +146,7 @@
 	        $mail->Port = 465;
 
 	        // Send Email
-	        $mail->setFrom('tatakmedellin@gmail.com');
+	        $mail->setFrom('tatakmedellin@gmail.com', 'System name no-reply');
 
 	        // Recipients
 	        $mail->addAddress($recipientEmail);
@@ -159,13 +159,13 @@
 
 	        $mail->send();
 
-	        $_SESSION['success'] = "Email sent successfully!";
-			$_SESSION['text'] = "Saved successfully!";
+	        $_SESSION['message'] = "Email sent successfully!";
+			$_SESSION['text'] = "Sent successfully!";
 			$_SESSION['status'] = "success";
 			header("Location: $page");
 
 	    } catch (Exception $e) {
-	        $_SESSION['success'] = "Message could not be sent. Mailer Error: " . $mail->ErrorInfo;
+	        $_SESSION['message'] = "Message could not be sent. Mailer Error: " . $mail->ErrorInfo;
 	        header("Location: $page");
 	    }
 	}

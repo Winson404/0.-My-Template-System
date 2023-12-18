@@ -22,7 +22,7 @@
           </div>
           <div class="form-group mb-3">
             <label for=""><b>Confirm password</b></label>
-            <input type="password" class="form-control" name="cpassword" placeholder="Retype password" id="cpassword" onkeyup="validate_password_confirm_password()" required minlength="8">
+            <input type="password" class="form-control" name="cpassword" placeholder="Retype password" id="cpassword" onkeyup="validate_confirm_password()" required minlength="8">
             <small id="wrong_pass_alert"></small>
           </div>
         </div>

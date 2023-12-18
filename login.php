@@ -35,7 +35,7 @@
           <div class="row">
             <div class="col-8">
               <div class="icheck-primary">
-                <input type="checkbox" id="remember" onclick="myFunction()">
+                <input type="checkbox" id="remember" onclick="showPassword()">
                 <label for="remember">
                   Show password
                 </label>
@@ -64,4 +64,20 @@
     </div>
   </div>
 </div>
+
+<!--  <div class="modal fade" id="approve" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered p-3">
+      <div class="modal-content">
+         <div class="modal-header bg-light">
+            <img src="../dist/img/AdminLTELogo.png" alt="" class="d-block m-auto img-circle img-fluid shadow-sm" width="100">
+        </div>
+        <div class="modal-body p-5">
+            <h6 class="text-center">Your session has timed out. Please login again</h6>
+        </div>
+        <div class="modal-footer alert-light">
+          <a href="../logout.php" type="button" class="btn btn-secondary">Close</a>
+        </div>
+      </div>
+    </div>
+  </div> -->
 <?php require_once 'footer.php'; ?>

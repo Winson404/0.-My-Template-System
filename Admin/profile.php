@@ -372,7 +372,7 @@ require_once 'sidebar.php';
                       <div class="form-group row">
                         <label for="cpassword" class="col-sm-2 col-form-label">Confirm password</label>
                         <div class="col-sm-10">
-                          <input type="password" class="form-control" placeholder="Confirm password" name="cpassword" required id="cpassword" onkeyup="validate_password()" minlength="8">
+                          <input type="password" class="form-control" placeholder="Confirm password" name="cpassword" required id="cpassword" onkeyup="validate_confirm_password()" minlength="8">
                           <small id="wrong_pass_alert" class="text-bold" style="font-style: italic;font-size: 12px;"></small>
                         </div>
                       </div>
@@ -386,29 +386,32 @@ require_once 'sidebar.php';
                   <div class="tab-pane" id="profileupdate">
                     <form action="process_update.php" method="POST" enctype="multipart/form-data">
                       <input type="hidden" class="form-control" value="<?php echo $row['user_Id']; ?>" name="user_Id">
-                      <div class="row d-flex justify-content-center">
-                        <!-- LOAD IMAGE PREVIEW -->
-                        <div class="col-lg-10">
-                          <div class="form-group" id="preview">
-                          </div>
-                        </div>
-                        <div class="col-lg-10">
-                          <div class="form-group">
-                            <span class="text-dark"><b>Update profile</b></span>
-                            <div class="input-group">
-                              <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="exampleInputFile" name="fileToUpload" onchange="getImagePreview(event)" required>
-                                <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                      <div class="row justify-content-center">
+                          <div class="col-lg-8">
+                            <div class="form-group">
+                              <label for="exampleInputFile" class="text-dark"><b>Update profile</b></label>
+                              <div class="input-group">
+                                <div class="custom-file">
+                                  <input type="file" class="custom-file-input" id="exampleInputFile" name="fileToUpload" onchange="getImagePreview(event)" required>
+                                  <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                </div>
+                                <!-- <div class="input-group-append">
+                                  <span class="input-group-text">Upload</span>
+                                </div> -->
                               </div>
-                              <div class="input-group-append">
-                                <span class="input-group-text">Upload</span>
+                              <small class="form-text text-muted">Max. 500KB</small>
+                            </div>
+                          </div>
+                          <div class="col-lg-3">
+                            <div class="form-group">
+                              <label for="imagePreview" class="text-dark"><b>Preview:</b></label>
+                              <div class="image-preview" style="border: 1px solid #ddd; padding: 10px; border-radius: 5px; background-color: #f8f9fa;">
+                                <img id="imagePreview" src="../images/image-holder.png" alt="Image Preview" class="img-fluid" style="width: 100%;">
                               </div>
                             </div>
-                            <p class="help-block text-danger">Max. 500KB</p>
                           </div>
-                          <hr>
                         </div>
-                      </div>
+
                       <div class="ml-3">
                         <button type="submit" class="ml-5 btn bg-gradient-primary" name="update_profile_admin">Submit</button>
                       </div>

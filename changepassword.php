@@ -34,7 +34,7 @@
           </div>
           <p id="wrong_pass_alert" class="text-bold" style="font-style: italic;font-size: 12px;color: #e60000;"></p>
           <div class="icheck-primary mt-3">
-            <input type="checkbox" id="remember" onclick="showPassword()">
+            <input type="checkbox" id="remember" onclick="showBothPassword()">
             <label for="remember">
               Show password
             </label>
@@ -54,16 +54,3 @@
   </div>
 </div>
 <?php require_once 'footer.php'; ?>
-<script>
-  function showPassword() {
-    var x = document.getElementById("password");
-    var y = document.getElementById("cpassword");
-    if (x.type === "password" || y.type === "password") {
-      x.type = "text";
-      y.type = "text";
-    } else {
-      x.type = "password";
-      y.type = "password";
-    }
-  }
-</script>

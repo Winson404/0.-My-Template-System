@@ -76,9 +76,21 @@
           <li class="nav-item d-none d-sm-inline-block">
             <a href="dashboard.php" class="nav-link">Home</a>
           </li>
-          <li class="nav-item d-none d-sm-inline-block">
-            <a href="contact-us.php" class="nav-link">Contact</a>
-          </li>
+          <?php
+          // Get the current URL
+          $currentUrl = $_SERVER['REQUEST_URI'];
+
+          // Check if the URL contains "Admin" folder
+          $isAdminPage = strpos($currentUrl, 'Admin') !== false;
+          ?>
+
+          <!-- Navigation Link -->
+          <?php if (!$isAdminPage): ?>
+            <li class="nav-item d-none d-sm-inline-block">
+              <a href="contact-us.php" class="nav-link">Contact</a>
+            </li>
+          <?php endif; ?>
+
         </ul>
         <!-- Right navbar links -->
         <ul class="navbar-nav ml-auto">
@@ -298,5 +310,3 @@
 
 </script>
 
-<script src="../sweetalert2.min.js"></script>
-<?php include '../sweetalert_messages.php'; ?>

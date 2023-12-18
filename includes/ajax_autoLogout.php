@@ -1,6 +1,7 @@
 <?php 
+	error_reporting(E_ALL);
+	ini_set('display_errors', 1);
 	include '../config.php';
-
 	
 	// Retrieve the POST data
 	$id = $_POST['id'];
@@ -18,9 +19,6 @@
 	  // Return an error response if needed
 	  echo "Error occurred while logging out!";
 	}
-
-
-
 
 ?>
 
