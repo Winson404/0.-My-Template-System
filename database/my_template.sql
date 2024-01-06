@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 18, 2023 at 12:44 PM
+-- Generation Time: Jan 06, 2024 at 10:21 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -66,31 +66,10 @@ INSERT INTO `announcement` (`actId`, `actName`, `actDate`, `date_added`) VALUES
 CREATE TABLE `log_history` (
   `log_Id` int(11) NOT NULL,
   `user_Id` int(11) NOT NULL,
-  `login_time` varchar(100) NOT NULL,
-  `logout_time` varchar(100) NOT NULL
+  `login_datetime` datetime NOT NULL,
+  `logout_datetime` datetime NOT NULL,
+  `logout_remarks` int(11) NOT NULL DEFAULT 0 COMMENT '0=Logged out successfully, 1=Unable to logout last login'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
---
--- Dumping data for table `log_history`
---
-
-INSERT INTO `log_history` (`log_Id`, `user_Id`, `login_time`, `logout_time`) VALUES
-(45, 66, '2023-12-18 03:36 PM', '2023-12-18 03:36:59'),
-(46, 66, '2023-12-18 03:36 PM', '2023-12-18 03:36:59'),
-(47, 66, '2023-12-18 03:37 PM', '2023-12-18 03:39:29'),
-(48, 66, '2023-12-18 03:44 PM', '2023-12-18 03:44:44'),
-(49, 66, '2023-12-18 03:44 PM', '2023-12-18 03:44:44'),
-(50, 72, '2023-12-18 03:45 PM', '2023-12-18 03:45:24'),
-(51, 66, '2023-12-18 03:48 PM', '2023-12-18 03:51:08'),
-(52, 66, '2023-12-18 05:17 PM', ''),
-(53, 66, '2023-12-18 05:22 PM', '2023-12-18 05:23:02'),
-(54, 66, '2023-12-18 05:24 PM', '2023-12-18 05:42:34'),
-(55, 66, '2023-12-18 05:43 PM', '2023-12-18 06:17:54'),
-(56, 66, '2023-12-18 06:25 PM', '2023-12-18 06:25:55'),
-(57, 66, '2023-12-18 06:32 PM', '2023-12-18 06:39:49'),
-(58, 66, '2023-12-18 06:43 PM', '2023-12-18 07:24:16'),
-(59, 87, '2023-12-18 07:24 PM', '2023-12-18 07:29:15'),
-(60, 66, '2023-12-18 07:35 PM', '');
 
 -- --------------------------------------------------------
 
@@ -133,10 +112,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_Id`, `firstname`, `middlename`, `lastname`, `suffix`, `dob`, `age`, `email`, `contact`, `birthplace`, `gender`, `civilstatus`, `occupation`, `religion`, `house_no`, `street_name`, `purok`, `zone`, `barangay`, `municipality`, `province`, `region`, `image`, `password`, `user_type`, `verification_code`, `date_registered`) VALUES
-(66, 'Admin', 'Admin', 'Admin', 'Admin', '2023-10-11', '1 week old', 'admin@gmail.com', '9359428963', 'Female', 'Male', 'Single', 'Admin', 'United Church of Christ in the Philippines', 'dsas', 'Admin', 'Admin', 'dsa', 'Admin', 'Admin', '', 'Admin', 'antelope-canyon-lower-canyon-arizona.jpg', '0192023a7bbd73250516f069df18b500', 'Admin', 374025, '2022-11-25 00:00:00'),
+(66, 'Admin', 'Admin', 'Admin', 'Admin', '2023-10-11', '1 week old', 'admin@gmail.com', '9359428963', 'Female', 'Male', 'Single', 'Admin', 'United Church of Christ in the Philippines', 'dsas', 'Admin', 'Admin', 'dsa', 'Admin', 'Admin', '', 'Admin', 'antelope-canyon-lower-canyon-arizona.jpg', '0192023a7bbd73250516f069df18b500', 'Admin', 254152, '2022-11-25 00:00:00'),
 (72, 'Userdss', 'User', 'User', 'Jr', '2022-12-21', '5 days old', 'user@gmail.com', '9359428963', 'gfdgfdg', 'Male', 'Married', 'gfdgfdgd', 'Buddhist', 'gfdg', 'fdg', 'gdfgdg', 'gfdg', 'dfgd', 'fdgdg', 'fdg', 'dfg', '2.jpg', '0192023a7bbd73250516f069df18b500', 'Staff', 295016, '2022-12-27 00:00:00'),
 (86, 'SampleSample Sample', 'Sample Sample Sample', 'Sample Sample', 'Sample', '2008-02-27', '15 Years Old', 'adminfdsfsfs@gmail.com', '9123456789', 'Samplef Fsdfsd', 'Male', 'Single', 'Sampleff Fsdfds', 'Evangelical Christianity', 'Fdfds Fdsf', 'Fsfsdfsdds ', 'Sf Fsdff', 'Fsdfsdfsdfs Fdsf Sfs', 'Fdsfd Fsfs Fs', 'Fdsfds', 'Fsdffdsf', 'Sdfsd', 'pexels-photo-2379005.jpeg', '0192023a7bbd73250516f069df18b500', 'Staff', 0, '2023-12-18 19:19:29'),
-(87, 'Leste', 'Leste', 'Leste', 'Leste', '1986-02-26', '37 Years Old', 'adminLeste@gmail.com', '9123456789', 'Leste', 'Female', 'Widow/ER', 'Leste', 'Iglesia Ni Cristo', 'Leste', 'Leste', 'Leste', 'Leste', 'Leste', 'Leste', 'Leste', 'Leste', '4.jpg', '83e7921e87b1df559db9c4d2ad9b2697', 'User', 0, '2023-12-18 19:22:55');
+(87, 'Lestesd', 'Leste', 'Leste', 'Leste', '1986-02-26', '37 Years Old', 'sonerwin12@gmail.com', '9123456789', 'Leste', 'Female', 'Widow/ER', 'Leste', 'Iglesia Ni Cristo', 'Leste', 'Leste', 'Leste', 'Leste', 'Leste', 'Leste', '', 'Leste', 'pexels-photo-1855582.jpeg', '0192023a7bbd73250516f069df18b500', 'User', 0, '2023-12-18 19:22:55');
 
 --
 -- Indexes for dumped tables
@@ -174,7 +153,7 @@ ALTER TABLE `announcement`
 -- AUTO_INCREMENT for table `log_history`
 --
 ALTER TABLE `log_history`
-  MODIFY `log_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `log_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
 
 --
 -- AUTO_INCREMENT for table `users`

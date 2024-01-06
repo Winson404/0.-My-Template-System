@@ -41,7 +41,7 @@
 		} else {
 			if(empty($file)) {
 				$update = mysqli_query($conn, "UPDATE users SET firstname='$firstname', middlename='$middlename', lastname='$lastname', suffix='$suffix', dob='$dob', age='$age', email='$email', contact='$contact', birthplace='$birthplace', gender='$gender', civilstatus='$civilstatus', occupation='$occupation', religion='$religion', house_no='$house_no', street_name='$street_name', purok='$purok', zone='$zone', barangay='$barangay', municipality='$municipality', province='$province', region='$region', user_type='$user_type' WHERE user_Id='$user_Id' ");
-				displayUpdateMessage($update, "Record has been updated.", $page);
+				displayUpdateMessage($update, $page);
 			} else {
 				// Check if image file is a actual image or fake image
 				$target_dir = "../images-users/";
@@ -76,7 +76,7 @@
 					if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
 
 					 $update = mysqli_query($conn, "UPDATE users SET firstname='$firstname', middlename='$middlename', lastname='$lastname', suffix='$suffix', dob='$dob', age='$age', email='$email', contact='$contact', birthplace='$birthplace', gender='$gender', civilstatus='$civilstatus', occupation='$occupation', religion='$religion', house_no='$house_no', street_name='$street_name', purok='$purok', zone='$zone', barangay='$barangay', municipality='$municipality', province='$province', region='$region', user_type='$user_type', image='$file' WHERE user_Id='$user_Id' ");
-              	     displayUpdateMessage($update, "Record has been updated.", $page);
+              	     displayUpdateMessage($update, $page);
 					} else {
 	    	            displayErrorMessage("There was an error uploading your profile picture.", $page);
 					}
@@ -99,7 +99,7 @@
 	            displayErrorMessage("Password did not match.", $page);
 	        } else {
 	            $update = mysqli_query($conn, "UPDATE users SET password='$password' WHERE user_Id='$user_Id'");
-	            displayUpdateMessage($update, "Password has been changed.", $page);
+	            displayUpdateMessage($update, $page);
 	        }
 	    } else {
 	    	displayErrorMessage("Old password is incorrect.", $page);
@@ -136,7 +136,7 @@
 
 	    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
 	        $update = mysqli_query($conn, "UPDATE users SET image='$file' WHERE user_Id='$user_Id'");
-	        displayUpdateMessage($update, "Profile picture has been updated!", $page);
+	        displayUpdateMessage($update, $page);
 	    } else {
 	        displayErrorMessage("There was an error uploading your file.", $page);
 	    }
@@ -177,7 +177,7 @@
 		} else {
 		  $update = mysqli_query($conn, "UPDATE users SET firstname='$firstname', middlename='$middlename', lastname='$lastname', suffix='$suffix', dob='$dob', age='$age', email='$email', contact='$contact', birthplace='$birthplace', gender='$gender', civilstatus='$civilstatus', occupation='$occupation', religion='$religion', house_no='$house_no', street_name='$street_name', purok='$purok', zone='$zone', barangay='$barangay', municipality='$municipality', province='$province', region='$region' WHERE user_Id='$user_Id' ");
 
-      	  displayUpdateMessage($update, "Record has been updated", $page);
+      	  displayUpdateMessage($update, $page);
 		}
 	}
 

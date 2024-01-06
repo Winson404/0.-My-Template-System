@@ -37,23 +37,36 @@
 		if(mysqli_num_rows($check)===1) {
 			$row = mysqli_fetch_array($check);
 			$position = $row['user_type'];
-
 			$log_ID = $row['user_Id'];
-			$login_time = date("Y-m-d h:i A");
-			$login = mysqli_query($conn, "INSERT INTO log_history (user_Id, login_time) VALUES ('$log_ID', '$login_time')");
 
+		    // Check if there is an ongoing session for this user
+		    $previous_session_query = mysqli_query($conn, "SELECT * FROM log_history WHERE user_Id='$log_ID' AND logout_datetime='0000-00-00 00:00:00'");
+		    $previous_session_row = mysqli_fetch_array($previous_session_query);
+
+		    if ($previous_session_row) {
+		        // If there is an ongoing session, update logout_remarks to 1
+		        mysqli_query($conn, "UPDATE log_history SET logout_remarks=1 WHERE log_Id='" . $previous_session_row['log_Id'] . "'");
+		    }
+		    
+			$login = mysqli_query($conn, "INSERT INTO log_history (user_Id, login_datetime) VALUES ('$log_ID', NOW())");
+
+			if ($login) {
+		        $login_time_query = mysqli_query($conn, "SELECT NOW() AS login_time");
+		        $login_time_row = mysqli_fetch_array($login_time_query);
+		        $login_time = $login_time_row['login_time'];
+		        $_SESSION['login_time'] = $login_time;
+		    }
+		    
 			if($position == 'Admin') {
 				$_SESSION['login_attempts'] = 0;
 	    		$_SESSION['last_login_attempt'] = time();
 				$_SESSION['admin_Id'] = $row['user_Id'];
-				$_SESSION['login_time'] = $login_time;
 				header("Location: Admin/dashboard.php");
 				exit();
 			} else {
 				$_SESSION['login_attempts'] = 0;
 	    		$_SESSION['last_login_attempt'] = time();
 				$_SESSION['user_Id'] = $row['user_Id'];
-				$_SESSION['login_time'] = $login_time;
 				header("Location: User/profile.php");
 				exit();
 			}
@@ -182,7 +195,7 @@
 		$user_Id   = $_POST['user_Id'];
 		$cpassword = md5($_POST['cpassword']);
 
-		$update = mysqli_query($conn, "UPDATE users SET password='$cpassword' WHERE user_Id='$user_Id' ");
+		$update = mysqli_query($conn, "UPDATE users SET password='$cpassword', verification_code=0 WHERE user_Id='$user_Id' ");
 		displayUpdateMessage($update, "Password has been changed.", "login.php", "changepassword.php?user_Id=".$user_Id);
 	}
 

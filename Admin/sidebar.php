@@ -6,7 +6,6 @@
     $row = mysqli_fetch_array($users);
 
     $login_time = $_SESSION['login_time'];
-    $logout_time = date('Y-m-d h:i A');
     // RECORD TIME LOGGED IN TO BE USED IN AUTO LOGOUT - CODE CAN BE FOUND ON ../INCLUDES/FOOTER.PHP
     $_SESSION['last_active'] = time();
     require_once '../includes/header.php';
@@ -48,7 +47,7 @@
         <li class="nav-item">
           <a href="dashboard.php" class="nav-link <?php echo (basename($_SERVER['PHP_SELF']) == 'dashboard.php') ? 'active' : ''; ?>">
             <i class="nav-icon fas fa-tachometer-alt"></i>
-            <p>Dashboard </p>
+            <p>Dashboard</p>
           </a>
         </li>
         <li class="nav-item">

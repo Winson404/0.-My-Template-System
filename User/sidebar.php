@@ -6,7 +6,6 @@
     $row = mysqli_fetch_array($users);
 
     $login_time = $_SESSION['login_time'];
-    $logout_time = date('Y-m-d h:i A');
     // RECORD TIME LOGGED IN TO BE USED IN AUTO LOGOUT - CODE CAN BE FOUND ON ../INCLUDES/FOOTER.PHP
     $_SESSION['last_active'] = time();
     require_once '../includes/header.php';

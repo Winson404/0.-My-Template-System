@@ -42,13 +42,13 @@
                 <tbody id="users_data">
                   <?php
                   $i = 1;
-                  $sql = mysqli_query($conn, "SELECT * FROM log_history WHERE user_Id = '$id'");
+                  $sql = mysqli_query($conn, "SELECT * FROM log_history WHERE user_Id = '$id' ORDER BY log_ID DESC");
                   while ($row = mysqli_fetch_array($sql)) {
                   ?>
                   <tr>
                     <td><?php echo $i++; ?></td>
-                    <td><?php echo date("F d, Y h:i A",strtotime($row['login_time'])); ?></td>
-                    <td><?php if($row['logout_time'] != '') { echo date("F d, Y h:i A",strtotime($row['logout_time'])); } else { echo 'On-going session'; } ?></td>
+                    <td><?= $row['login_datetime'] ?></td>
+                    <td><?= $row['logout_datetime'] != '0000-00-00 00:00:00' ? $row['logout_datetime'] : 'On-going session'; ?></td>
                   </tr>
                   <?php } ?>
                 </tbody>

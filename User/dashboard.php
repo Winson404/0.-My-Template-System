@@ -6,12 +6,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Contact us</h1>
+          <h1>Dashboard us</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="dashboard.php">Home</a></li>
-            <li class="breadcrumb-item active">Contact us</li>
+            <li class="breadcrumb-item active">Dashboard us</li>
           </ol>
         </div>
       </div>
@@ -20,6 +20,7 @@
   <section class="content">
     <div class="container-fluid">
       <div class="row d-flex justify-content-center">
+
         <div class="col-lg-3 col-6">
           <div class="small-box bg-info">
             <div class="inner">
@@ -52,6 +53,7 @@
             <a href="users.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
           </div>
         </div>
+
       </div>
     </div>
   </section>
