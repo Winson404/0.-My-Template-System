@@ -48,7 +48,15 @@
                   <tr>
                     <td><?php echo $i++; ?></td>
                     <td><?= $row['login_datetime'] ?></td>
-                    <td><?= $row['logout_datetime'] != '0000-00-00 00:00:00' ? $row['logout_datetime'] : 'On-going session'; ?></td>
+                    <td>
+                        <?php
+                        if ($row['logout_datetime'] == '0000-00-00 00:00:00' && $row['logout_remarks'] == 1) {
+                            echo '<span class="badge badge-warning">Unable to logout last login</span>';
+                        } else {
+                            echo $row['logout_datetime'] != '0000-00-00 00:00:00' ? $row['logout_datetime'] : '<span class="badge badge-success">On-going session</span>';
+                        }
+                        ?>
+                    </td>
                   </tr>
                   <?php } ?>
                 </tbody>

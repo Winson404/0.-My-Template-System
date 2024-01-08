@@ -196,7 +196,7 @@
 		$cpassword = md5($_POST['cpassword']);
 
 		$update = mysqli_query($conn, "UPDATE users SET password='$cpassword', verification_code=0 WHERE user_Id='$user_Id' ");
-		displayUpdateMessage($update, "Password has been changed.", "login.php", "changepassword.php?user_Id=".$user_Id);
+		displayUpdateMessage($update, "login.php");
 	}
 
 
