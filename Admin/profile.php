@@ -48,7 +48,7 @@ require_once 'sidebar.php';
               </p>
               <hr>
               <strong><i class="fa-solid fa-calendar-days"></i> Date registered</strong>
-              <p class="text-muted ml-3"><?php echo date("F d, Y h:i A", strtotime($row['date_registered'])); ?></p>
+              <p class="text-muted ml-3"><?php echo date("F d, Y h:i A", strtotime($row['created_at'])); ?></p>
               <hr>
               <!--  <strong><i class="fas fa-pencil-alt mr-1"></i> Skills</strong>
               <p class="text-muted">
@@ -87,7 +87,7 @@ require_once 'sidebar.php';
                     <div class="form-group row">
                       <label for="First name" class="col-sm-2 col-form-label">Date of birth</label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" id="First name" placeholder="First name" value="<?php echo date("F d, Y", strtotime($row['dob'])); echo ' - '; echo $row['age'] ?>" readonly>
+                        <input type="text" class="form-control" id="First name" placeholder="First name" value="<?php echo date("F d, Y", strtotime($row['dob'])).' - '.$ageValue = calculateFormattedAge($row['dob']) ?>" readonly>
                       </div>
                     </div>
                     <div class="form-group row">
@@ -190,7 +190,7 @@ require_once 'sidebar.php';
                       <div class="form-group row">
                         <label for="txtage" class="col-sm-2 col-form-label">Age</label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control bg-white" placeholder="Age" required id="txtage" name="age" readonly value="<?php echo $row['age']; ?>">
+                          <input type="text" class="form-control bg-white" placeholder="Age" required id="txtage" name="age" readonly value="<?php echo $ageValue = calculateFormattedAge($row['dob']); ?>">
                         </div>
                       </div>
                       <div class="form-group row">

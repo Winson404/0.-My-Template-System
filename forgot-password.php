@@ -7,7 +7,7 @@
         <a href="index.php" class="h1"><b>Find your </b>ACCOUNT</a>
       </div>
       <div class="card-body">
-        <p class="login-box-msg">You forgot your password? Here you can easily retrieve a new password.</p>
+        <p class="login-box-msg">Please enter your email or mobile number to search for your account.</p>
         <form action="processes.php" method="post">
           <div class="input-group">
             <input type="email" class="form-control" placeholder="email@gmail.com" name="email"  id="email" onkeydown="validation()" onkeyup="validation()" required>

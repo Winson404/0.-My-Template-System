@@ -101,7 +101,7 @@
         <li class="nav-item">
           <a href="log_history.php" class="nav-link <?php echo (basename($_SERVER['PHP_SELF']) == 'log_history.php') ? 'active' : ''; ?>">
             <i class="fas fa-list-alt"></i>
-            <p>&nbsp;&nbsp; Log history</p>
+            <p>&nbsp;&nbsp; Login history</p>
           </a>
         </li>
         <li class="nav-header text-secondary" style="margin-bottom: -10px;">DATABASE MGMT</li>

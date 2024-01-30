@@ -4,7 +4,7 @@
   <div class="login-box d-block m-auto">
     <div class="card card-outline card-primary">
       <div class="card-header text-center">
-        <a href="#" class="h1"><b>Reset </b>Password</a>
+        <a href="#" class="h1"><b>Send code to </b>email</a>
       </div>
       <div class="card-body">
         <?php
@@ -27,7 +27,7 @@
             
             <div class="col-md-12">
               <div class="input-group">
-                <p>Send code via email?</p>
+                <p>We can send a login code to:</p>
               </div>
             </div>
             <div class="col-md-12" style="margin-top: -18px;">

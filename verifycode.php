@@ -4,7 +4,7 @@
   <div class="login-box d-block m-auto">
     <div class="card card-outline card-primary">
       <div class="card-header text-center">
-        <a href="#" class="h1"><b>Enter your </b>Code</a>
+        <a href="#" class="h1"><b>Enter security </b>code</a>
       </div>
       <div class="card-body">
         <?php

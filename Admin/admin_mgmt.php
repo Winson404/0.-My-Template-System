@@ -384,7 +384,7 @@
                 <div class="col-lg-2 col-md-6 col-sm-6 col-12">
                   <div class="form-group">
                     <span class="text-dark"><b>Age</b></span>
-                    <input type="text" class="form-control bg-white" placeholder="Age" required id="txtage" name="age" readonly value="<?php echo $row['age']; ?>">
+                    <input type="text" class="form-control bg-white" placeholder="Age" required id="txtage" name="age" readonly value="<?php echo $ageValue = calculateFormattedAge($row['dob']); ?>">
                   </div>
                 </div>
                 

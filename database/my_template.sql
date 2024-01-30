@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 06, 2024 at 10:21 AM
+-- Generation Time: Jan 30, 2024 at 08:58 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -55,7 +55,8 @@ INSERT INTO `announcement` (`actId`, `actName`, `actDate`, `date_added`) VALUES
 (17, 'akoa kinis', '2023-12-09', '2023-10-24 15:59:24'),
 (18, 'dfss', '2023-12-18', '2023-12-18 06:48:00'),
 (19, 'Smaple', '2023-12-26', '2023-12-18 19:03:50'),
-(20, 'dsa', '2023-12-28', '2023-12-18 19:17:01');
+(20, 'dsa', '2023-12-28', '2023-12-18 19:17:01'),
+(23, 'dsadadada', '2024-01-30', '2024-01-26 01:27:52');
 
 -- --------------------------------------------------------
 
@@ -71,6 +72,31 @@ CREATE TABLE `log_history` (
   `logout_remarks` int(11) NOT NULL DEFAULT 0 COMMENT '0=Logged out successfully, 1=Unable to logout last login'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
+--
+-- Dumping data for table `log_history`
+--
+
+INSERT INTO `log_history` (`log_Id`, `user_Id`, `login_datetime`, `logout_datetime`, `logout_remarks`) VALUES
+(81, 66, '2024-01-07 14:22:11', '2024-01-07 14:25:59', 0),
+(82, 87, '2024-01-07 14:26:03', '2024-01-07 14:27:24', 0),
+(83, 66, '2024-01-07 14:29:23', '2024-01-07 14:30:38', 0),
+(84, 66, '2024-01-13 22:23:59', '0000-00-00 00:00:00', 1),
+(85, 66, '2024-01-16 04:25:09', '2024-01-16 04:47:29', 0),
+(86, 66, '2024-01-21 20:19:30', '2024-01-21 20:30:41', 0),
+(87, 66, '2024-01-23 10:09:20', '2024-01-23 10:19:37', 0),
+(88, 66, '2024-01-26 00:11:49', '2024-01-26 00:13:53', 0),
+(89, 87, '2024-01-26 00:14:00', '2024-01-26 00:24:31', 0),
+(90, 66, '2024-01-26 01:27:20', '2024-01-26 01:44:31', 0),
+(91, 87, '2024-01-26 02:16:16', '2024-01-26 02:26:16', 0),
+(92, 66, '2024-01-26 02:30:25', '2024-01-26 02:40:21', 0),
+(93, 66, '2024-01-26 02:41:46', '2024-01-26 02:46:28', 0),
+(94, 87, '2024-01-26 02:46:55', '2024-01-26 02:50:37', 0),
+(95, 66, '2024-01-26 02:50:44', '2024-01-26 02:54:37', 0),
+(96, 66, '2024-01-29 22:01:51', '2024-01-29 22:03:54', 0),
+(97, 66, '2024-01-30 22:52:57', '2024-01-30 23:28:58', 0),
+(98, 66, '2024-01-31 03:22:04', '2024-01-31 03:51:11', 0),
+(99, 87, '2024-01-31 03:51:16', '2024-01-31 03:54:17', 0);
+
 -- --------------------------------------------------------
 
 --
@@ -79,43 +105,45 @@ CREATE TABLE `log_history` (
 
 CREATE TABLE `users` (
   `user_Id` int(11) NOT NULL,
-  `firstname` varchar(255) NOT NULL,
-  `middlename` varchar(255) NOT NULL,
-  `lastname` varchar(255) NOT NULL,
-  `suffix` varchar(255) NOT NULL,
-  `dob` varchar(255) NOT NULL,
-  `age` varchar(100) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `contact` varchar(100) NOT NULL,
-  `birthplace` varchar(255) NOT NULL,
-  `gender` varchar(255) NOT NULL,
-  `civilstatus` varchar(50) NOT NULL,
-  `occupation` varchar(50) NOT NULL,
-  `religion` varchar(100) NOT NULL,
-  `house_no` varchar(255) NOT NULL,
-  `street_name` varchar(255) NOT NULL,
-  `purok` varchar(255) NOT NULL,
-  `zone` varchar(255) NOT NULL,
-  `barangay` varchar(255) NOT NULL,
-  `municipality` varchar(255) NOT NULL,
-  `province` varchar(255) NOT NULL,
-  `region` varchar(255) NOT NULL,
-  `image` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `user_type` varchar(50) NOT NULL DEFAULT 'User',
-  `verification_code` int(11) NOT NULL,
-  `date_registered` datetime NOT NULL
+  `firstname` varchar(100) DEFAULT NULL,
+  `middlename` varchar(100) DEFAULT NULL,
+  `lastname` varchar(100) DEFAULT NULL,
+  `suffix` varchar(100) DEFAULT NULL,
+  `dob` date DEFAULT NULL,
+  `age` int(11) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `contact` varchar(20) DEFAULT NULL,
+  `birthplace` varchar(100) DEFAULT NULL,
+  `gender` varchar(10) DEFAULT NULL,
+  `civilstatus` varchar(20) DEFAULT NULL,
+  `occupation` varchar(100) DEFAULT NULL,
+  `religion` varchar(100) DEFAULT NULL,
+  `house_no` varchar(50) DEFAULT NULL,
+  `street_name` varchar(100) DEFAULT NULL,
+  `purok` varchar(50) DEFAULT NULL,
+  `zone` varchar(50) DEFAULT NULL,
+  `barangay` varchar(50) DEFAULT NULL,
+  `municipality` varchar(100) DEFAULT NULL,
+  `province` varchar(100) DEFAULT NULL,
+  `region` varchar(100) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `user_type` varchar(20) DEFAULT 'User',
+  `verification_code` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_Id`, `firstname`, `middlename`, `lastname`, `suffix`, `dob`, `age`, `email`, `contact`, `birthplace`, `gender`, `civilstatus`, `occupation`, `religion`, `house_no`, `street_name`, `purok`, `zone`, `barangay`, `municipality`, `province`, `region`, `image`, `password`, `user_type`, `verification_code`, `date_registered`) VALUES
-(66, 'Admin', 'Admin', 'Admin', 'Admin', '2023-10-11', '1 week old', 'admin@gmail.com', '9359428963', 'Female', 'Male', 'Single', 'Admin', 'United Church of Christ in the Philippines', 'dsas', 'Admin', 'Admin', 'dsa', 'Admin', 'Admin', '', 'Admin', 'antelope-canyon-lower-canyon-arizona.jpg', '0192023a7bbd73250516f069df18b500', 'Admin', 254152, '2022-11-25 00:00:00'),
-(72, 'Userdss', 'User', 'User', 'Jr', '2022-12-21', '5 days old', 'user@gmail.com', '9359428963', 'gfdgfdg', 'Male', 'Married', 'gfdgfdgd', 'Buddhist', 'gfdg', 'fdg', 'gdfgdg', 'gfdg', 'dfgd', 'fdgdg', 'fdg', 'dfg', '2.jpg', '0192023a7bbd73250516f069df18b500', 'Staff', 295016, '2022-12-27 00:00:00'),
-(86, 'SampleSample Sample', 'Sample Sample Sample', 'Sample Sample', 'Sample', '2008-02-27', '15 Years Old', 'adminfdsfsfs@gmail.com', '9123456789', 'Samplef Fsdfsd', 'Male', 'Single', 'Sampleff Fsdfds', 'Evangelical Christianity', 'Fdfds Fdsf', 'Fsfsdfsdds ', 'Sf Fsdff', 'Fsdfsdfsdfs Fdsf Sfs', 'Fdsfd Fsfs Fs', 'Fdsfds', 'Fsdffdsf', 'Sdfsd', 'pexels-photo-2379005.jpeg', '0192023a7bbd73250516f069df18b500', 'Staff', 0, '2023-12-18 19:19:29'),
-(87, 'Lestesd', 'Leste', 'Leste', 'Leste', '1986-02-26', '37 Years Old', 'sonerwin12@gmail.com', '9123456789', 'Leste', 'Female', 'Widow/ER', 'Leste', 'Iglesia Ni Cristo', 'Leste', 'Leste', 'Leste', 'Leste', 'Leste', 'Leste', '', 'Leste', 'pexels-photo-1855582.jpeg', '0192023a7bbd73250516f069df18b500', 'User', 0, '2023-12-18 19:22:55');
+INSERT INTO `users` (`user_Id`, `firstname`, `middlename`, `lastname`, `suffix`, `dob`, `age`, `email`, `contact`, `birthplace`, `gender`, `civilstatus`, `occupation`, `religion`, `house_no`, `street_name`, `purok`, `zone`, `barangay`, `municipality`, `province`, `region`, `image`, `password`, `user_type`, `verification_code`, `created_at`) VALUES
+(66, 'Admin', '', 'Admin', 'Admin', '1995-03-02', 28, 'admin@gmail.com', '9359428963', 'Female', 'Male', 'Single', 'Admin', 'Iglesia Ni Cristo', 'Dsas', 'Admin', 'Admin', 'Dsa', 'Admin', 'Admin', '', 'Admins', '2.jpg', '0192023a7bbd73250516f069df18b500', 'Admin', NULL, '2022-11-24 16:00:00'),
+(72, 'Userdss', 'User', 'User', 'Jr', '2022-12-21', 5, 'user@gmail.com', '9359428963', 'gfdgfdg', 'Male', 'Married', 'gfdgfdgd', 'Buddhist', 'gfdg', 'fdg', 'gdfgdg', 'gfdg', 'dfgd', 'fdgdg', 'fdg', 'dfg', '2.jpg', '0192023a7bbd73250516f069df18b500', 'Staff', 295016, '2022-12-26 16:00:00'),
+(86, 'SampleSample Sample', 'Sample Sample Sample', 'Sample Sample', 'Sample', '2008-02-27', 15, 'adminfdsfsfs@gmail.com', '9123456789', 'Samplef Fsdfsd', 'Male', 'Single', 'Sampleff Fsdfds', 'Evangelical Christianity', 'Fdfds Fdsf', 'Fsfsdfsdds ', 'Sf Fsdff', 'Fsdfsdfsdfs Fdsf Sfs', 'Fdsfd Fsfs Fs', 'Fdsfds', 'Fsdffdsf', 'Sdfsd', 'pexels-photo-2379005.jpeg', '0192023a7bbd73250516f069df18b500', 'Staff', 0, '2023-12-18 11:19:29'),
+(87, 'Lestesd', 'Leste', 'Leste', 'Leste', '1986-02-26', 37, 'sonerwin12@gmail.com', '9123456789', 'Leste', 'Female', 'Widow/ER', 'Leste', 'Iglesia Ni Cristo', 'Leste', 'Leste', 'Leste', 'Leste', 'Leste', 'Leste', '', 'Leste', 'pexels-photo-1855582.jpeg', '0192023a7bbd73250516f069df18b500', 'User', 192273, '2023-12-18 11:22:55'),
+(88, 'Leste', 'Leste', 'Leste', 'Leste', '1989-03-02', 34, 'sonerLestewin8@gmail.com', '9359428963', 'Leste', 'Male', 'Single', 'Leste', 'Jehovah\'s Witnesses', 'Leste', 'Leste', 'LesteLeste', 'Leste', 'Leste', 'Leste', 'Medellin', 'Leste', '3.jpg', '5bb3fd0bd3e6c36990367456eee83314', 'User', NULL, '2024-01-30 19:21:25'),
+(89, 'Staffko', 'Staffko', 'Staffko', '', '1985-02-27', 38, 'sonerwin8Staffko@gmail.com', '9359428963', 'Staffko', 'Male', 'Single', 'Staffko', 'Iglesia Ni Cristo', 'Staffko', 'Staffko', 'Staffko', 'Staffko', 'Staffko', 'Staffko', 'Staffkos', 'Staffko', '2.jpg', '5bb3fd0bd3e6c36990367456eee83314', 'Staff', NULL, '2024-01-30 19:24:41');
 
 --
 -- Indexes for dumped tables
@@ -147,19 +175,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `announcement`
 --
 ALTER TABLE `announcement`
-  MODIFY `actId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `actId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `log_history`
 --
 ALTER TABLE `log_history`
-  MODIFY `log_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
+  MODIFY `log_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
+  MODIFY `user_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

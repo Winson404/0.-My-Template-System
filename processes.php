@@ -195,7 +195,7 @@
 		$user_Id   = $_POST['user_Id'];
 		$cpassword = md5($_POST['cpassword']);
 
-		$update = mysqli_query($conn, "UPDATE users SET password='$cpassword', verification_code=0 WHERE user_Id='$user_Id' ");
+		$update = mysqli_query($conn, "UPDATE users SET password='$cpassword', verification_code=NULL WHERE user_Id='$user_Id' ");
 		displayUpdateMessage($update, "login.php");
 	}
 

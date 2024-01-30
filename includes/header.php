@@ -231,7 +231,7 @@
               <li class="user-body">
                 <div class="row">
                   <div class="col-12 text-center">
-                    <small>Member since <?php echo date("F d, Y", strtotime($row['date_registered'])); ?></small>
+                    <small>Member since <?php echo date("F d, Y", strtotime($row['created_at'])); ?></small>
                   </div>
                   <!-- <div class="col-4 text-center">
                     <a href="#">Followers</a>

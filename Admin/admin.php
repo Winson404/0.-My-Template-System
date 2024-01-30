@@ -67,7 +67,7 @@
                         <span class="badge badge-success p-1"><?php echo $row['user_type']; ?></span>
                         <?php endif; ?>
                       </td>
-                      <td class="text-primary"><?php echo date("F d, Y h:i A", strtotime($row['date_registered'])); ?></td>
+                      <td class="text-primary"><?php echo date("F d, Y h:i A", strtotime($row['created_at'])); ?></td>
                       <td>
                         <a class="btn btn-primary btn-sm" href="admin_view.php?user_Id=<?php echo $row['user_Id']; ?>"><i class="fas fa-folder"></i> View</a>
                         <?php if($row['user_type'] == 'Admin'): ?>

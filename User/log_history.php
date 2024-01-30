@@ -47,13 +47,13 @@
                   ?>
                   <tr>
                     <td><?php echo $i++; ?></td>
-                    <td><?= $row['login_datetime'] ?></td>
+                    <td><?= date('F d, Y h:i:s A', strtotime($row['login_datetime'])) ?></td>
                     <td>
                         <?php
                         if ($row['logout_datetime'] == '0000-00-00 00:00:00' && $row['logout_remarks'] == 1) {
                             echo '<span class="badge badge-warning">Unable to logout last login</span>';
                         } else {
-                            echo $row['logout_datetime'] != '0000-00-00 00:00:00' ? $row['logout_datetime'] : '<span class="badge badge-success">On-going session</span>';
+                            echo $row['logout_datetime'] != '0000-00-00 00:00:00' ? date('F d, Y h:i:s A', strtotime($row['logout_datetime'])) : '<span class="badge badge-success">On-going session</span>';
                         }
                         ?>
                     </td>

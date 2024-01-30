@@ -58,7 +58,7 @@
                   <div class="col-4">
                     <div class="form-group">
                       <small class="text-muted"><b>Age:</b></small>
-                      <h6><?php echo $row['age']; ?></h6>
+                      <h6><?php echo $ageValue = calculateFormattedAge($row['dob']); ?></h6>
                     </div>
                   </div>
                   <div class="col-4">

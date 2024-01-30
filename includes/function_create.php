@@ -17,7 +17,7 @@
 		$lastname       = ucwords(mysqli_real_escape_string($conn, $_POST['lastname']));
 		$suffix         = ucwords(mysqli_real_escape_string($conn, $_POST['suffix']));
 		$dob            = ucwords(mysqli_real_escape_string($conn, $_POST['dob']));
-		$age            = ucwords(mysqli_real_escape_string($conn, $_POST['age']));
+		$age            = intval($_POST['age']);
 		$birthplace     = ucwords(mysqli_real_escape_string($conn, $_POST['birthplace']));
 		$gender         = ucwords(mysqli_real_escape_string($conn, $_POST['gender']));
 		$civilstatus    = ucwords(mysqli_real_escape_string($conn, $_POST['civilstatus']));
@@ -58,7 +58,7 @@
 	            displayErrorMessage("Your file was not uploaded.", $page);
 	        } else {
 	            if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-	            	$save = mysqli_query($conn, "INSERT INTO users (firstname, middlename, lastname, suffix, dob, age, email, contact, birthplace, gender, civilstatus, occupation, religion, house_no, street_name, purok, zone, barangay, municipality, province, region, image, password, user_type, date_registered) VALUES ('$firstname', '$middlename', '$lastname', '$suffix', '$dob', '$age', '$email', '$contact', '$birthplace', '$gender', '$civilstatus', '$occupation', '$religion', '$house_no', '$street_name', '$purok', '$zone', '$barangay', '$municipality', '$province', '$region', '$file', '$password', '$user_type', NOW())");
+	            	$save = mysqli_query($conn, "INSERT INTO users (firstname, middlename, lastname, suffix, dob, age, email, contact, birthplace, gender, civilstatus, occupation, religion, house_no, street_name, purok, zone, barangay, municipality, province, region, image, password, user_type) VALUES ('$firstname', '$middlename', '$lastname', '$suffix', '$dob', '$age', '$email', '$contact', '$birthplace', '$gender', '$civilstatus', '$occupation', '$religion', '$house_no', '$street_name', '$purok', '$zone', '$barangay', '$municipality', '$province', '$region', '$file', '$password', '$user_type')");
 	            	displaySaveMessage($save, $page);
 	            } else {
 	            	displayErrorMessage("There was an error uploading your profile picture.", $page); 

@@ -1,6 +1,9 @@
 <?php 
 
 	session_start();
+	error_reporting(E_ALL);
+	ini_set('display_errors', 1);
+	ini_set('log_errors', 1);
 	date_default_timezone_set('Asia/Manila');
 	// get current date and time
     $date_today = date('Y-m-d');
@@ -55,5 +58,20 @@
 	    $_SESSION['status'] = "error";
 	    header("Location: $page");
 		exit();
+	}
+
+
+	function calculateFormattedAge($dob) {
+	    $dobDate = new DateTime($dob);
+	    $currentDate = new DateTime();
+	    $ageInterval = $currentDate->diff($dobDate);
+
+	    if ($ageInterval->y > 0) {
+	        return $ageInterval->y . ' years old';
+	    } elseif ($ageInterval->m > 0) {
+	        return $ageInterval->m . ' months old';
+	    } else {
+	        return floor($ageInterval->d / 7) . ' weeks old';
+	    }
 	}
 ?>

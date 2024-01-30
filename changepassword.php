@@ -25,7 +25,7 @@
           <p id="password-message" class="text-bold" style="font-style: italic;font-size: 12px;color: #e60000;"></p>
           
           <div class="input-group mb-3">
-            <input type="password" class="form-control" placeholder="Confirm new password" name="cpassword" id="cpassword" onkeyup="validate_password()" minlength="8">
+            <input type="password" class="form-control" placeholder="Confirm new password" name="cpassword" id="cpassword" onkeyup="validate_confirm_password()" minlength="8">
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-lock"></span>
